@@ -1,0 +1,49 @@
+<?php
+/**
+ * Autoload module specific resources - models and layouts
+ *
+ * @author     Jim Yi
+ * @copyright  Copyright (c) 2010 Jim Yi
+ * @since      File available since Release 1.10.1
+ */
+
+/**
+ * @copyright  Copyright (c) 2010 Jim Yi
+ */
+class JY_Controller_Plugin_ModuleLoader extends Zend_Controller_Plugin_Abstract {
+
+	/**
+	 * Set the module's custom layout if it exists
+	 *
+	 * @access public
+	 * @param  Zend_Controller_Request_Abstract $request The request object
+	 */
+	public function routeShutdown(Zend_Controller_Request_Abstract $request) {
+		$moduleName = $request->getModuleName();
+		$layout = Zend_Layout::getMvcInstance();
+		$layoutFile = $layout->getLayoutPath() . $moduleName . '.' . $layout->getViewSuffix();
+		if (file_exists($layoutFile)) {
+			$layout->setLayout($moduleName);
+		}
+	}
+
+	/**
+	 * Autoload models for the requested module
+	 *
+	 * @access public
+	 * @param  Zend_Controller_Request_Abstract $request The request object
+	 */
+	public function preDispatch(Zend_Controller_Request_Abstract $request) {
+		$moduleName = $request->getModuleName();
+		$loader = new Zend_Loader_Autoloader_Resource(array (
+			'basePath' => APPLICATION_PATH . '/modules/' . $moduleName,
+			'namespace' => ucfirst($moduleName),
+		));
+		$loader->addResourceType('model', 'models', 'Model');
+		$loader->addResourceType('constants', 'constants', 'Constants');
+	}
+
+}
+
+/* End of file ModuleLoader.php
+/* Location: library/JY/Controller/Plugin/ModuleLoader.php */

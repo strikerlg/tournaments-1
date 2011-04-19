@@ -1,0 +1,55 @@
+<?php
+	$title = isset($this->bracket) ? htmlentities($this->bracket->title) : '';
+	$description = isset($this->bracket) ? htmlentities($this->bracket->description) : '';
+?>
+<h2><?php echo $this->action ?> Tournament</h2>
+
+<form action="<?php echo $this->url() ?>" method="post" class="tournament_details_form">
+	<p>
+		<label>Title:</label><br />
+		<input type="text" name="title" size="40" value="<?php echo $title ?>" /><br />
+		<label>Description:</label><br />
+		<textarea name="description" rows="5" cols="30"><?php echo $description ?></textarea><br /><br />
+	</p>
+
+	<div class="entrants">
+		<div class="left">
+			<?php for ($i = 1; $i <= 16; $i++):
+				$entrant = isset($this->bracket) && $i <= $this->bracket->size && isset($this->bracket->data[$i - 1]) ? htmlentities($this->bracket->data[$i - 1]) : '';
+			?>
+				<label class="entrant">
+					<span><?php echo $i ?>.</span>
+					<input type="text" name="bracket[]" size="30" value="<?php echo $entrant ?>" />
+				</label><br />
+			<?php endfor; ?>
+		</div>
+		<div class="left">
+			<?php for ($i = 17; $i <= 32; $i++):
+				$entrant = isset($this->bracket) && $i < $this->bracket->size && isset($this->bracket->data[$i - 1]) ? htmlentities($this->bracket->data[$i - 1]) : '';
+			?>
+				<label class="entrant">
+					<span><?php echo $i ?>.</span>
+					<input type="text" name="bracket[]" size="30" value="<?php echo $entrant ?>" />
+				</label><br />
+			<?php endfor; ?>
+		</div>
+	</div>
+
+	<p>
+		<label><input type="checkbox" name="randomize" value="true" /> Randomize seeds</label>
+	</p>
+
+	<?php if ($this->action == 'Edit'): ?>
+		<p>
+			<strong>Warning! Modifying the entrants above will reset the tournament progress.</strong>
+		</p>
+	<?php endif; ?>
+
+	<p>
+		<?php if (isset($this->bracket)): ?>
+			<input type="hidden" name="id" value="<?php echo $this->bracket->id ?>" />
+		<?php endif; ?>
+		<input type="hidden" name="action" value="<?php echo $this->action ?>" />
+		<input type="submit" value="<?php echo $this->action ?>" />
+	</p>
+</form>

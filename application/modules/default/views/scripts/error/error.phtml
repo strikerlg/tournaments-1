@@ -1,0 +1,13 @@
+<h3>An error occurred</h3>
+
+<?php if (isset($this->exception) && APPLICATION_ENV != 'live'): ?>
+
+	<h3><br />Exception information:</h3>
+	<p>
+		<strong>Message:</strong> <?php echo $this->exception->getMessage() ?>
+	</p>
+
+	<h3><br />Stack trace:</h3>
+	<pre><?php echo $this->exception->getTraceAsString() ?></pre>
+
+<?php endif ?>

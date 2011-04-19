@@ -1,0 +1,14 @@
+<div class="splash_box">
+
+	<h3>Login or <a href="/register">Register</a></h3>
+
+	<form action="<?php echo $this->url() ?>" method="post">
+		<p><label><span>Username:</span> <input type="text" name="username" /></label></p>
+		<p><label><span>Password:</span> <input type="password" name="password" /></label></p>
+		<p>
+			<input type="hidden" name="action" value="login" />
+			<input type="submit" value="Login" />
+		</p>
+	</form>
+
+</div>

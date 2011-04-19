@@ -1,0 +1,30 @@
+<h4>My Open Tournaments</h4>
+
+<table class="brackets_list">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Created</th>
+			<th>Last Updated</th>
+			<th>Tasks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($this->brackets as $bracket): ?>
+		<tr>
+			<td><a href="/t/<?php echo $bracket->id ?>"><?php echo htmlentities($bracket->title) ?></a></td>
+			<td><?php echo htmlentities($bracket->description) ?></td>
+			<td><?php echo $bracket->created ?></td>
+			<td><?php echo $bracket->updated ?></td>
+			<td>
+				<a href="/tournaments/edit?id=<?php echo $bracket->id ?>">(edit)</a>
+				<a href="/tournaments/delete?id=<?php echo $bracket->id ?>" class="delete_tournament">(delete)</a>
+			</td>
+		</tr>
+		<?php endforeach ?>
+		<?php if (count($this->brackets) == 0): ?>
+			<tr><td colspan="5">No tournaments found.</td></tr>
+		<?php endif ?>
+	</tbody>
+</table>

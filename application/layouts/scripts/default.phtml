@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>tour.naments &beta;</title>
+	<link rel="stylesheet" href="/css/base.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/content.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/bracket.css" type="text/css" media="all" />
+	<script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+	<script src="/js/main.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+	<div id="wrap">
+
+		<div id="header">
+			<h1><a href="/">tour.naments &beta;</a></h1>
+			<div class="user_box"></div>
+		</div>
+
+		<?php if (!empty($this->nav) && !Tournament_Auth::getInstance()->isGuest()): ?>
+
+			<ul class="main_nav">
+				<li<?php if ($this->nav == 'dashboard') echo ' class="active"' ?>>
+					<a href="/dashboard">My Tournaments</a>
+				</li>
+				<li<?php if ($this->nav == 'create') echo ' class="active"' ?>>
+					<a href="/tournaments/create">Create Tournament</a>
+				</li>
+			</ul>
+			<div id="user_info">Logged in as <?php echo Tournament_Auth::getInstance()->getUsername() ?> <a href="/logout">(logout)</a></div>
+
+		<?php endif; ?>
+
+		<div id="body">
+
+			<?php echo $this->layout()->content ?>
+
+		</div>
+
+		<div id="footer">
+			&copy; <?php echo date('Y') ?> <a href="/">tour.naments</a>
+		</div>
+
+	</div>
+
+	<div class="modal">
+		<h3 class="modal_title"></h3>
+		<div class="modal_content"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h2>Tournament: <?php echo htmlentities($this->bracket->title) ?></h2>
+
+<p><strong>Description:</strong> <?php echo htmlentities($this->bracket->description); ?></p>
+
+<?php
+	// choose a bracket script to render based on the bracket size
+	$script = 'tournaments/brackets/' . (int) $this->bracket->size;
+	echo $this->render($script . '.phtml');
+?>

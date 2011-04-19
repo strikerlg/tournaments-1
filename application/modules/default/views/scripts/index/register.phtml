@@ -1,0 +1,18 @@
+<div class="splash_box">
+
+	<h3>Register</h3>
+
+	<?php if (isset($this->error)): ?>
+		<p class="error">Registration error: <?php echo $this->error ?></p>
+	<?php endif; ?>
+	<form action="<?php echo $this->url() ?>" method="post">
+		<p><label><span>Email:</span> <input type="text" name="email" /></label></p>
+		<p><label><span>Username:</span> <input type="text" name="username" /></label></p>
+		<p><label><span>Password:</span> <input type="password" name="password" /></label></p>
+		<p>
+			<input type="hidden" name="action" value="Register" />
+			<input type="submit" value="Register!" />
+		</p>
+	</form>
+
+</div>

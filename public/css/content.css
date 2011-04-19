@@ -1,0 +1,33 @@
+h2 { font-size: 1.75em; margin: 1em 0; }
+h3 { font-size: 1.5em; }
+
+#wrap { margin: auto; }
+
+#header { font-size: 2em; margin: 1em 25px; }
+#header a { color: #FBEC5D; }
+#header h11 { background: url("/images/banner.png") no-repeat; width: 448px; height: 60px; }
+#header h11 a { display: block; height: 100%; text-indent: -9999px; width: 100%; }
+#body { background-color: #F1F1F1; clear: both; line-height: 1.25em; overflow: hidden; padding: 1em; }
+#footer { color: #FFF; padding: 1em; text-align: center; }
+#footer a { color: #FBEC5D; }
+.modal { display: none; }
+
+.main_nav { clear: both; float: left; font-size: 1.25em; line-height: 1.5em; overflow: hidden; }
+.main_nav li { background-color: #0045AA; float: left; margin-right: 1em; }
+.main_nav li.active a { background-color: #F1F1F1; color: #333; }
+.main_nav li a { color: #FFF; display: block; padding: 5px 20px; }
+#user_info { background-color: transparent; color: #FFF; float: right; line-height: 1.25em; margin-right: 25px; padding: 5px; }
+
+.splash_box { background-color: #FFF; height: 200px; margin: 2em auto; padding: 5%; width: 70%; }
+.splash_box { border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+.splash_box h1 { font-size: 2em; margin: 0 0 1em; }
+.splash_box p { margin: 1em 0; }
+.splash_box label span { display: inline-block; width: 75px; }
+
+.tournament_details_form { line-height: 1.75em; }
+.tournament_details_form .entrants { line-height: 2.5em; overflow: hidden; }
+.tournament_details_form .entrants .left { margin-right: 100px; }
+.tournament_details_form .entrant span { display: inline-block; width: 25px; }
+
+.brackets_list { width: 100%; }
+.brackets_list td, .brackets_list th { padding: 5px; }
